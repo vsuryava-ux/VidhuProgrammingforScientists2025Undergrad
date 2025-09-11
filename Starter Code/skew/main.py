@@ -16,27 +16,12 @@ def main():
 
     # --- E. coli genome experiment & plotting (uncomment to run) ---
     """
-    demo_genome = "CATGGGCATCGGCCATACGCC"
-    arr = skew_array(demo_genome)
-    print("Demo skew array length:", len(arr))
-    print("First few values:", arr[:10])
-    print("Minimum skew indices (demo):", minimum_skew(demo_genome))
-    """
-
-    # --- E. coli genome experiment & plotting (uncomment to run) ---
-    """
     url = "https://bioinformaticsalgorithms.com/data/realdatasets/Replication/E_coli.txt"
-    contents = urllib.request.urlopen(url)
 
-    # Check status code
-    if contents.getcode() != 200:
-        raise urllib.error.URLError("Bad status code")
+    response = requests.get(url)
+    response.raise_for_status()
 
-    # Read and decode
-    contents = contents.read()
-    genome = contents.decode('utf-8')
-    if not genome:
-        raise ValueError("Downloaded genome sequence is empty.")
+    genome = response.text
 
     print("The number of nucleotides in E. coli genome is " + str(len(genome)))
 
@@ -120,23 +105,6 @@ def skew(symbol: str) -> int:
 
     Raises:
     - ValueError: If `symbol` is not length 1.
-    """
-    # TODO: Implement this function
-    pass
-
-
-def min_integer_array(values: list[int]) -> int:
-    """
-    Returns the minimum value in an integer list.
-
-    Parameters:
-    - values (list[int]): List of ints.
-
-    Returns:
-    - int: Minimum element of `values`.
-
-    Raises:
-    - ValueError: If `values` is empty.
     """
     # TODO: Implement this function
     pass
