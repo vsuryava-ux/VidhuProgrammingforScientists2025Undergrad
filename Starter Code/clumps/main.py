@@ -24,7 +24,7 @@ Contains(patterns, s)
 def main():
     print("Finding clumps.")
 
-def find_clumps(text: str, k: int, window_length: int, t: int) -> List[str]:
+def find_clumps(text: str, k: int, window_length: int, t: int) -> list[str]:
     """
     Finds a list of strings representing all k-mers that appear at least t times
     in a window of given length in the string.
@@ -47,7 +47,7 @@ def find_clumps(text: str, k: int, window_length: int, t: int) -> List[str]:
     pass
 
 
-def contains(patterns: List[str], s: str) -> bool:
+def contains(patterns: list[str], s: str) -> bool:
     """
     Returns True if s appears in the list `patterns`, else False.
 
@@ -65,7 +65,7 @@ def contains(patterns: List[str], s: str) -> bool:
     pass
 
 
-def frequency_table(text: str, k: int) -> Dict[str, int]:
+def frequency_table(text: str, k: int) -> dict[str, int]:
     """
     Builds a frequency table (dictionary) of all k-mers of length k in `text`,
     including overlaps.
