@@ -128,6 +128,28 @@ def minimum_skew(genome: str) -> list[int]:
     pass
 
 
+def min_integer_array(a:list[int]) -> int:
+    """"
+    Returning the minimum value in a list of integers.
+    """
+
+    if len(a) == 0:
+        raise ValueError("Error: empty list given.") 
+
+    m = 0
+
+    # iterate over list, updating m if we find a smaller value
+
+    for i, val in enumerate(a):
+        # ranges over the values in a list
+        # if we find a smaller value than the current min 
+        # OR we are at the first element, update m
+        if val < m or i == 0:
+            m = val
+
+    return m
+
+
 def draw_skew(skew_list: list[int]) -> None:
     """
     draw_skew draws a skew diagram using a skew_array output.
