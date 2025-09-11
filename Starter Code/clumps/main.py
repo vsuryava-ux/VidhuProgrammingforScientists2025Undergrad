@@ -1,3 +1,6 @@
+def main():
+    print("Finding clumps.")
+
 # Pseudocode from the learning objectives (for reference)
 
 """
@@ -12,17 +15,6 @@ FindClumps(text, k, L, t)
                 patterns ← append(patterns, s)
     return patterns
 """
-
-"""
-Contains(patterns, s)
-    for every string pattern in patterns
-        if s = pattern
-            return true
-    return false
-"""
-
-def main():
-    print("Finding clumps.")
 
 def find_clumps(text: str, k: int, window_length: int, t: int) -> list[str]:
     """
@@ -42,24 +34,6 @@ def find_clumps(text: str, k: int, window_length: int, t: int) -> list[str]:
     - Follow the pseudocode in FIND_CLUMPS_PSEUDOCODE.
     - Build a frequency table for each window using `frequency_table`.
     - Use `contains` to avoid duplicates (or see the faster variant below).
-    """
-    # TODO: Implement this function
-    pass
-
-
-def contains(patterns: list[str], s: str) -> bool:
-    """
-    Returns True if s appears in the list `patterns`, else False.
-
-    Parameters:
-    - patterns (list[str]): A list of strings.
-    - s (str): Query string.
-
-    Returns:
-    - bool: True if s ∈ patterns, else False.
-
-    Hint:
-    - You may use the `in` operator or a manual loop, per the code along.
     """
     # TODO: Implement this function
     pass
