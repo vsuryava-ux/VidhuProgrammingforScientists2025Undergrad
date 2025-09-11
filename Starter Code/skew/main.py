@@ -1,6 +1,6 @@
 from matplotlib import pyplot
 
-import urllib.request
+import requests
 
 def main():
     print("Building a skew array.")
