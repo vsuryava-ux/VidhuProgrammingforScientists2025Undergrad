@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+from matplotlib import pyplot
 
 import urllib.request
 
@@ -167,11 +167,11 @@ def draw_skew(skew_list: list[int]) -> None:
     """
     if len(skew_list) == 0:
         raise ValueError("skew_list is empty")
-    plt.plot(skew_list)
-    plt.title("Skew Diagram")
-    plt.xlabel("Genome Position")
-    plt.ylabel("Skew Value")
-    plt.savefig("skewDiagram.png")
+    pyplot.plot(skew_list)
+    pyplot.title("Skew Diagram")
+    pyplot.xlabel("Genome Position")
+    pyplot.ylabel("Skew Value")
+    pyplot.savefig("skewDiagram.png")
 
 if __name__ == "__main__":
     main()
