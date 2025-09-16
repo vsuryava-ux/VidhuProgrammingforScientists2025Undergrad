@@ -1,3 +1,47 @@
+"""
+Pseudocode
+
+PlayGameOfLife(initialBoard, numGens)
+    boards ← array of numGens + 1 game boards
+    boards[0] ← initialBoard
+    for every integer i from 1 to numGens
+        boards[i] ← UpdateBoard(boards[i–1])
+    return boards
+
+UpdateBoard(currentBoard)
+    numRows ← CountRows(currentBoard)
+    numCols ← CountCols(currentBoard)
+    newBoard ← InitializeBoard(numRows, numCols)
+    for every integer r between 0 and numRows – 1
+        for every integer c between 0 and numCols – 1
+            newBoard[r][c] ← UpdateCell(currentBoard, r, c)
+    return newBoard
+
+UpdateCell(currentBoard, r, c)
+    numNeighbors ← CountLiveNeighbors(currentBoard, r, c)
+    if currentBoard[r][c] = true (current cell is alive)
+        if numNeighbors = 2 or numNeighbors = 3 (propagation)
+            return true
+        else (no mates/overpopulation)
+            return false
+    else (current cell is dead)
+        if numNeighbors = 3 (zombie!)
+            return true
+        else (rest in peace)
+            return false
+
+CountLiveNeighbors(currentBoard, r, c)
+    count ← 0
+    for every integer i between r – 1 and r + 1
+        for every integer j between c – 1 and c + 1
+            if (i≠r or j≠c) and InField(currentBoard, i, j) = true
+                if currentBoard[i][j] = true
+                    count ← count + 1
+    return count
+
+    
+"""
+
 from datatypes import GameBoard
 
 
