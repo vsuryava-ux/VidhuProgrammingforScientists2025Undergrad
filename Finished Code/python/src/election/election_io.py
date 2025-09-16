@@ -1,6 +1,5 @@
 import csv
 
-
 def read_electoral_votes(filename: str) -> dict[str, int]:
     """
     Processes the number of electoral votes for each state.
