@@ -161,7 +161,7 @@ def count_rows(board: GameBoard) -> int:
     """
     Count the number of rows in a GameBoard.
     Args:
-        board (GameBoard): A 2D list of booleans representing the game state.
+        board (GameBoard): A 2D list of ints representing the game state.
     Returns:
         int: Number of rows in the board.
     """
@@ -176,7 +176,7 @@ def count_columns(board: GameBoard) -> int:
     """
     Count the number of columns in a GameBoard.
     Args:
-        board (GameBoard): A 2D list of booleans representing the game state.
+        board (GameBoard): A 2D list of ints representing the game state.
     Returns:
         int: Number of columns in the board.
     Raises:
