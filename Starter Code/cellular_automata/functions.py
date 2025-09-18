@@ -152,7 +152,7 @@ def initialize_board(num_rows: int, num_cols: int) -> GameBoard:
     board: GameBoard = [] # declaring board
 
     for _ in range(num_rows):
-        row = [0 * num_cols]
+        row = [0] * num_cols
         board.append(row)
 
     return board
