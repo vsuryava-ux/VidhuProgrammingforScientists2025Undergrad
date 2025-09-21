@@ -1,6 +1,6 @@
 from matplotlib import pyplot
 
-import requests
+import urllib.request
 
 def main():
     print("Building a skew array.")
@@ -16,12 +16,27 @@ def main():
 
     # --- E. coli genome experiment & plotting (uncomment to run) ---
     """
+    demo_genome = "CATGGGCATCGGCCATACGCC"
+    arr = skew_array(demo_genome)
+    print("Demo skew array length:", len(arr))
+    print("First few values:", arr[:10])
+    print("Minimum skew indices (demo):", minimum_skew(demo_genome))
+    """
+
+    # --- E. coli genome experiment & plotting (uncomment to run) ---
+    """
     url = "https://bioinformaticsalgorithms.com/data/realdatasets/Replication/E_coli.txt"
+    contents = urllib.request.urlopen(url)
 
-    response = requests.get(url)
-    response.raise_for_status()
+    # Check status code
+    if contents.getcode() != 200:
+        raise urllib.error.URLError("Bad status code")
 
-    genome = response.text
+    # Read and decode
+    contents = contents.read()
+    genome = contents.decode('utf-8')
+    if not genome:
+        raise ValueError("Downloaded genome sequence is empty.")
 
     print("The number of nucleotides in E. coli genome is " + str(len(genome)))
 
@@ -89,8 +104,22 @@ def skew_array(genome: str) -> list[int]:
     Raises:
     - ValueError: If genome is empty.
     """
-    # TODO: Implement this function
-    pass
+    if len(genome) == 0:
+        raise ValueError("Zero length genome given.")
+    
+    n = len(genome)
+
+    # define a skew array
+    skew_array = [0] * n+1  # we do n+1 because a given index of the skew_array is 1 plus the current value of the nucleotides we are counting. So an element of this list at n+1 is equal to the GC skew from the first nucleotide to the nth nucleotide.
+
+    # range over genome, and set skew_array[i-1] using previous value
+
+    for i in range(1, n+1):
+        skew_array[i] = skew_array[i-1] + skew(genome[i-1])  # this essentially takes the previous element of skew array and calls a subroutine which adds or subtracts 1 if the next nucleotide encountered is G or C
+
+    return skew_array
+
+
 
 
 def skew(symbol: str) -> int:
@@ -106,8 +135,38 @@ def skew(symbol: str) -> int:
     Raises:
     - ValueError: If `symbol` is not length 1.
     """
-    # TODO: Implement this function
-    pass
+    
+    if len(symbol) != 1:
+        raise ValueError("Length of string must be 1.")
+
+    if symbol == "G" or symbol == "g":
+        return 1
+    elif symbol == "C" or symbol == "c":
+        return -1
+    else:
+        return 0
+
+
+
+
+def MinIntegerArray(a: list[int]) -> int:
+    """
+    Takes in an array of integers. Returns the minimum integer in this array.
+
+    a: integer array
+
+    Returns: minimum element of a
+    """
+    if len(a) == 0:
+        raise ValueError("List cannot be empty.")
+    
+    min = a[0]  # assumes for now that the first element is the minimum
+
+    for element in a:
+        if min > element:  # ranges through the elements of a and if it finds an element less than the current min, then min gets assigned to this element
+            min = element
+
+    return min
 
 
 def minimum_skew(genome: str) -> list[int]:
@@ -124,30 +183,25 @@ def minimum_skew(genome: str) -> list[int]:
     Raises:
     - ValueError: If genome is empty.
     """
-    # TODO: Implement this function
-    pass
+    
+    if len(genome) == 0:
+        raise ValueError("Empty genome given.")
+    
+    # create list of indices
+    indices = []
 
+    skew_arr = skew_array(genome)
 
-def min_integer_array(a:list[int]) -> int:
-    """"
-    Returning the minimum value in a list of integers.
-    """
+    # find the minimum value
+    m = MinIntegerArray(skew_arr)
 
-    if len(a) == 0:
-        raise ValueError("Error: empty list given.") 
+    # range over the skew array, and find all indicies where val = m
+    for i in range(0, len(skew_arr)):
+        if skew_arr[i] == m:
+            indices.append(i)
 
-    m = 0
+    return indices
 
-    # iterate over list, updating m if we find a smaller value
-
-    for i, val in enumerate(a):
-        # ranges over the values in a list
-        # if we find a smaller value than the current min 
-        # OR we are at the first element, update m
-        if val < m or i == 0:
-            m = val
-
-    return m
 
 
 def draw_skew(skew_list: list[int]) -> None:
