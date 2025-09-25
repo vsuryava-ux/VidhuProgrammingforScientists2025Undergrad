@@ -31,6 +31,8 @@ def main():
 
     print("We made the surface?")
 
+    print("We don't really know because we need to visualize the surface.")
+
     pygame.quit()
 
     """

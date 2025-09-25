@@ -23,7 +23,7 @@ def draw_game_board(board: GameBoard, cell_width: int) -> pygame.Surface:
     height = count_rows(board) * cell_width
 
     # make the surface 
-    surface = pygame.Surface(int(width), int(height))
+    surface = pygame.Surface((width, height))
 
     # draw on surface
     dark_gray = (60, 60, 60)
