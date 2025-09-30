@@ -27,9 +27,6 @@ def main():
 
 
 
-
-
-
 def euclid_gcd(a: int, b: int) -> int:
     """
     Returns the GCD of two integers by applying Euclid's algorithm from 2400 years ago.

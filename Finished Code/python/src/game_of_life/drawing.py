@@ -32,6 +32,10 @@ def draw_game_board(board: GameBoard, cell_width: int) -> pygame.Surface:
     # set the background color to dark gray 
     surface.fill(dark_gray)
 
+    # set the radius of the circles to draw 
+    scaling_factor = 0.8
+    radius = scaling_factor * (cell_width / 2)
+
     # fill in the colored squares 
     num_rows = count_rows(board)
     for row in range(num_rows): 
@@ -40,12 +44,20 @@ def draw_game_board(board: GameBoard, cell_width: int) -> pygame.Surface:
             # only draw cell if it's alive
             if board[row][col]:
                 # draw cell as white. But where?
-                x = col * cell_width
-                y = row * cell_width
-
                 # draw our rectangle 
-                pygame.draw.rect(surface, white, (int(x), int(y), cell_width, cell_width))
+                # x = col * cell_width
+                # y = row * cell_width
+                
+                # pygame.draw.rect(surface, white, (int(x), int(y), cell_width, cell_width))
 
+                # I will draw a circle instead
+                # center should be in the center of the cell
+                x = col * cell_width + cell_width/2
+                y = row * cell_width + cell_width/2
+
+                # radius will be a little less than cell_width/2 
+
+                pygame.draw.circle(surface, white, (int(x), int(y)), int(radius))
 
     return surface
 
@@ -61,4 +73,13 @@ def draw_game_boards(boards: list[GameBoard], cell_width: int) -> list[pygame.Su
     """
     if not isinstance(boards, list) or len(boards) == 0:
         raise ValueError("boards must be a non-empty list.")
-    return []  # TODO: implement
+    
+    if not isinstance(cell_width, int) or cell_width <= 0:
+        raise ValueError("Issue with cell_width parameter.")
+
+    surfaces = []
+
+    for board in boards: 
+        surfaces.append(draw_game_board(board, cell_width))
+
+    return surfaces

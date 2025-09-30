@@ -6,6 +6,7 @@ def main():
     print("Prime finding.")
 
     n = 10
+    
 
     prime_booleans = trivial_prime_finder(n)
 
