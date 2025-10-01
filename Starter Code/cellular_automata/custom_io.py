@@ -21,14 +21,9 @@ def set_row_values(line_elements: list[str]) -> list[int]:
     """
     if not isinstance(line_elements, list) or len(line_elements) == 0:
         raise ValueError("line_elements must be a non-empty list of strings.")
-    row: list[int] = []
-    for s in line_elements:
-        s_stripped = s.strip()
-        try:
-            row.append(int(s_stripped))
-        except ValueError as e:
-            raise ValueError(f"Invalid integer '{s}' in board file.") from e
-    return row
+    
+    # TODO: fill in this function
+    pass
 
 def read_rules_from_file(filename: str) -> dict[str, int]:
     """
