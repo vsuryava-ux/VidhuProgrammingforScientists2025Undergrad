@@ -27,12 +27,9 @@ def play_automaton(initial_board: GameBoard, num_gens: int,
     if not isinstance(rules, dict):
         raise ValueError("rules must be a dict[str, int].")
 
-    boards = []
-    boards.append(initial_board)
-    
-    for _ in range(num_gens):
-        boards.append(update_board(boards[-1], neighborhood_type, rules))
-    return boards
+    # TODO: Implement function
+    pass
+
 
 def update_board(current_board: GameBoard,
                  neighborhood_type: str,
@@ -57,17 +54,8 @@ def update_board(current_board: GameBoard,
     if not isinstance(rules, dict):
         raise ValueError("rules must be a dictionary.")
 
-    # first, create a new board corresponding to the next generation. All cells will have state 0.
-    num_rows = count_rows(current_board)
-    num_cols = count_columns(current_board)
-    new_board = initialize_board(num_rows, num_cols)
-
-    # iterate through all cells of current_board and update each one into new_board
-    for r in range(num_rows):
-        for c in range(num_cols):
-            new_board[r][c] = update_cell(current_board, r, c, neighborhood_type, rules)
-
-    return new_board
+    # TODO: Implement function
+    pass
 
 def update_cell(board: GameBoard, r: int, c: int,
                 neighborhood_type: str,
@@ -97,8 +85,8 @@ def update_cell(board: GameBoard, r: int, c: int,
     if not isinstance(rules, dict):
         raise ValueError("rules must be a dict[str, int].")
 
-    # TODO: Build neighborhood string and look it up in rules.
-    return 0
+    # TODO: Implement function
+    pass
 
 def neighborhood_to_string(current_board: GameBoard, r: int, c: int,
                            neighborhood_type: str) -> str:
@@ -127,7 +115,7 @@ def neighborhood_to_string(current_board: GameBoard, r: int, c: int,
         raise ValueError('neighborhood_type must be "Moore" or "vonNeumann".')
 
     # TODO: implement neighborhood string construction
-    return ""
+    pass
 
 # Helper functions are below
 

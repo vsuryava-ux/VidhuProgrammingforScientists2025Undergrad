@@ -3,10 +3,11 @@ from functions import assert_rectangular
 import pygame
 
 
-def draw_game_board(board: GameBoard, cell_width: int):
+def draw_game_board(board: GameBoard, cell_width: int) -> pygame.Surface:
     """
     Draw a single GameBoard to an image/surface (implementation up to you).
-    Returns an image-like object (e.g., a PIL.Image, a pygame.Surface, etc.).
+    
+    Returns a pygame.Surface object representing the visualization of the board).
     """
     if not isinstance(board, list) or len(board) == 0:
         raise ValueError("board must be a non-empty 2D list.")
@@ -17,7 +18,7 @@ def draw_game_board(board: GameBoard, cell_width: int):
     # TODO: implement drawing logic
     return None
 
-def draw_game_boards(boards: list[GameBoard], cell_width: int) -> list:
+def draw_game_boards(boards: list[GameBoard], cell_width: int) -> list[pygame.Surface]:
     """
     Draw multiple GameBoards and return a list of images/surfaces.
     """
@@ -26,5 +27,9 @@ def draw_game_boards(boards: list[GameBoard], cell_width: int) -> list:
     if not isinstance(cell_width, int) or cell_width <= 0:
         raise ValueError("cell_width must be a positive integer.")
 
-    # TODO: implement multiple-board drawing
-    return []
+    surfaces = []
+
+    for board in boards: 
+        surfaces.append(draw_game_board(board, cell_width))
+
+    return surfaces
