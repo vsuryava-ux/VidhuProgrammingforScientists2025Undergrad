@@ -3,15 +3,15 @@ from functions import assert_rectangular, count_rows, count_columns
 import pygame
 
 
-def draw_game_board(board: GameBoard, cell_width: int) -> pygame.Surface:
+def draw_game_board(current_board: GameBoard, cell_width: int) -> pygame.Surface:
     """
     Draw a single GameBoard to an image/surface (implementation up to you).
     
     Returns a pygame.Surface object representing the visualization of the board).
     """
-    if not isinstance(board, list) or len(board) == 0:
+    if not isinstance(current_board, list) or len(current_board) == 0:
         raise ValueError("board must be a non-empty 2D list.")
-    assert_rectangular(board)
+    assert_rectangular(current_board)
     if not isinstance(cell_width, int) or cell_width <= 0:
         raise ValueError("cell_width must be a positive integer.")
 
