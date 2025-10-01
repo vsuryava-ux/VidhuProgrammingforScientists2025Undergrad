@@ -1,5 +1,5 @@
 from datatypes import GameBoard
-from functions import assert_rectangular
+from functions import assert_rectangular, count_rows, count_columns
 import pygame
 
 
