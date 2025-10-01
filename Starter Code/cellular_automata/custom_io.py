@@ -34,5 +34,6 @@ def read_rules_from_file(filename: str) -> dict[str, int]:
     """
     if not isinstance(filename, str) or len(filename) == 0:
         raise ValueError("filename must be a non-empty string.")
+    
     # TODO: implement parsing of rules file
-    return {}
+    pass
