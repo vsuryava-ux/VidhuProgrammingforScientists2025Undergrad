@@ -15,6 +15,8 @@ class OrderedPair:
         self.x: float = float(x)
         self.y: float = float(y)
 
+    def __repr__(self):
+        return f"OrderedPair({self.x}, {self.y})"
 
 class Body:
     """
@@ -65,6 +67,8 @@ class Body:
         self.green = green
         self.blue = blue
 
+    def __repr__(self):
+        return f"Body(name={self.name}, mass={self.mass}, radius={self.radius})"
 
 class Universe:
     """
@@ -81,3 +85,6 @@ class Universe:
 
         self.bodies = bodies
         self.width = float(width)
+
+    def __repr__(self):
+        return f"Universe(n_bodies={len(self.bodies)}, width={self.width})"
