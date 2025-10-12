@@ -46,7 +46,7 @@ def main():
     # make prey = 1 everywhere
     for i in range(len(initial_board)):
         for j in range(len(initial_board[i])):
-            initial_board[r][c] = (1, initial_board[r][c][0])
+            initial_board[r][c] = (1, initial_board[r][c][1])
 
     # parameters
     num_gens = 8000
